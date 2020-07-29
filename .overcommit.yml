@@ -1,0 +1,49 @@
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: warn
+
+  CaseConflicts:
+    enabled: false
+
+  RakeTarget:
+    enabled: true
+    description: 'Validate Puppet and Ruby code'
+    targets:
+      - 'validate'
+    command: [ 'bundle', 'exec', 'rake' ]
+    include:
+      - '**/*.pp'
+      - '**/*.rb'
+      - '**/*.erb'
+      - 'data/**/*'
+      - 'metadata.json'
+
+  JsonSyntax:
+    enabled: true
+    description: 'Validate json files'
+
+  PuppetLint:
+    enabled: true
+    description: 'Check Puppet manifests with linter'
+    command: ['bundle', 'exec', 'rake', 'lint']
+    flags: []
+
+  YamlSyntax:
+    enabled: true
+    description: 'Check YAML files syntax'
+
+  RuboCop:
+    enabled: true
+    description: 'Check Ruby code style with RuboCop'
+    command: ['bundle', 'exec', 'rake', 'rubocop']
+    flags: []
+
+PrePush:
+  RSpec:
+    enabled: true
+    description: Run unit-tests
+    command: ['bundle', 'exec', 'rake', 'spec']
+    include:
+      - '**/*.pp'
+      - '**/*.rb'
+      - '**/*.erb'

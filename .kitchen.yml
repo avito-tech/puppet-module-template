@@ -1,0 +1,51 @@
+---
+driver:
+  name: docker
+provisioner:
+  name: puppet_apply
+  manifests_path: spec/acceptance
+  manifest: site.pp
+  modules_path: manifests
+  hiera_config_path: spec/acceptance/hiera.yaml
+  hiera_data_path: spec/acceptance/data
+  hiera_deep_merge: true
+  ignore_spec_fixtures: true
+  puppet_verbose: true
+  puppet_debug: false
+  require_puppet_repo: false
+  require_puppet_collections: false
+  require_chef_for_busser: false
+  require_chef_omnibus: false
+  puppet_detailed_exitcodes: true
+  puppet_whitelist_exit_code: 2
+  retry_on_exit_code:
+    - 0
+    - 4
+    - 6
+  max_retries: 2
+platforms:
+  - name: debian-docker
+    driver_config:
+      # FIXME:
+      # build puppet docker image using Dockerfile.acceptance
+      # and put it here:
+      image: puppet-docker-image:tag
+      platform: debian
+      use_cache: true
+      privileged: true
+      provision_command:
+        - apt-get update
+      run_options: "-v /sys/fs/cgroup:/sys/fs/cgroup:ro"
+      run_command: "/lib/systemd/systemd"
+      use_internal_docker_network: false
+  - name: debian-vagrant
+    driver_plugin: vagrant
+    driver_config:
+      box: debian/stretch64
+verifier:
+  name: inspec
+  reporter:
+    - junit:junit.acceptance.xml
+    - cli
+transport:
+  name: sftp

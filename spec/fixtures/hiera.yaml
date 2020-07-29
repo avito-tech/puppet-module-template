@@ -1,0 +1,11 @@
+---
+version: 5
+
+defaults:
+  datadir: 'data'
+
+hierarchy:
+  - name: "YAML backend"
+    data_hash: yaml_data
+    paths:
+      - 'common.yaml'
