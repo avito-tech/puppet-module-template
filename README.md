@@ -108,7 +108,7 @@ bundle exec kitchen test -t spec/acceptance
 ```
 
 Тесты пишутся на [inspec](https://www.inspec.io) и помещаются в spec/acceptance/<suite_name>/*_spec.rb. 
-С примером написанных acceptance тестов можно ознакомиться в репозитории [avito-vault](FIXME).
+С примером написанных acceptance тестов можно ознакомиться в репозитории [avito-vault](https://github.com/avito-tech/avito-vault).
 
 ### Генерация документации
 
@@ -127,4 +127,4 @@ bundle exec reake strings:reference
 
 ## Смотри также
 
-[Puppet control repo coding standards](docs/avito-coding-standards.md) — стандарты кодирования для модулей в Avito
+[Puppet module coding standards](docs/avito-coding-standards.md) — стандарты кодирования для модулей в Avito
