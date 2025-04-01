@@ -40,7 +40,7 @@
 #
 # @summary Installs PostgreSQL
 #
-# <!-- Официальная документация Puppet Strings: https://puppet.com/docs/puppet/6.2/puppet_strings.html#available-strings-tags -->
+# <!-- Официальная документация Puppet Strings: [https://puppet.com/docs/puppet/6.2/puppet_strings.html#available-strings-tags](https://www.puppet.com/docs/puppet/6/puppet_strings.html#available-strings-tags) -->
 class postgresql::install {
 ```
 
